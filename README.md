@@ -72,7 +72,6 @@ docker ps
 - prometheus
 - grafana
 
-
 ## 🛠 Инициализация PostgreSQL
 
 Подключиться к БД:
@@ -93,6 +92,13 @@ CREATE EXTENSION pg_stat_statements;
 SELECT * FROM pg_stat_statements LIMIT 1;
 ```
 
+## Prometheus
+
+<img width="696" height="248" alt="image" src="https://github.com/user-attachments/assets/121f9e7f-c570-4f72-abc4-1f6ca1e43e1c" />
+
+<img width="696" height="226" alt="image" src="https://github.com/user-attachments/assets/d4866e62-98a5-42f4-9d0d-c51c713df97d" />
+
+Проверим, что у нас prometheus мониторит pg_exporter и правила алертов успешно подключены
 
 ## 📊 Grafana
 
@@ -114,6 +120,8 @@ SELECT * FROM pg_stat_statements LIMIT 1;
 - **PostgreSQL Exporter Dashboard**
 - Grafana ID: **9628**
 
+<img width="684" height="715" alt="image" src="https://github.com/user-attachments/assets/3a90931c-3d99-4d5a-95e5-d3287d96ffdd" />
+
 
 ## 🔍 Что мониторится
 
@@ -131,6 +139,9 @@ ORDER BY mean_exec_time DESC
 LIMIT 5;
 ```
 
+<img width="694" height="316" alt="image" src="https://github.com/user-attachments/assets/d708632e-b646-4997-85e2-64b7df414775" />
+
+
 ### 🔒 Locks
 
 Метрика:
@@ -142,6 +153,7 @@ LIMIT 5;
 ```sql
 SELECT * FROM pg_locks WHERE granted = false;
 ```
+<img width="697" height="114" alt="image" src="https://github.com/user-attachments/assets/4c6c3e68-d170-4863-ac79-5dcc6e588afe" />
 
 
 ### 🔌 Connections
@@ -214,3 +226,7 @@ Session 2:
 ```sql
 UPDATE pg_class SET relname = relname;
 ```
+
+<img width="295" height="256" alt="image" src="https://github.com/user-attachments/assets/1f7c2115-d7df-48b8-8238-36f4681225b0" />
+
+На графике в Grafana мы видим, что количество locks выросло из за такой транзакции незаврешенный, long transactions, таких моментов стараться не допускать
