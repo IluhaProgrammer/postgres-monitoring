@@ -22,6 +22,6 @@ route:
 receivers:
   - name: telegram
     telegram_configs:
-      - bot_token: "8543855938:AAGDlnX-U1C3EEGHJFEm_21UeVxAicgqmJA"
-        chat_id: 5104353822
+      - bot_token: "..."
+        chat_id: ...
         parse_mode: HTML
